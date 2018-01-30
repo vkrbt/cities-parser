@@ -4,7 +4,7 @@ const request = require('request-promise-native');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
-const letters = 'А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ы Э Ю Я'.split(' ');
+const letters = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЫЭЮЯ'.split('').reverse();
 const url = 'http://geo.koltyrin.ru/spisok_gorodov_mira.php?letter='
 
 const getOptions = letter => ({
