@@ -1,0 +1,25 @@
+{
+  "name": "parser",
+  "version": "1.0.0",
+  "description": "Parser of 'http://geo.koltyrin.ru'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vkrbt",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vkrbt/cities-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vkrbt/cities-parser/issues"
+  },
+  "homepage": "https://github.com/vkrbt/cities-parser#readme"
+}
