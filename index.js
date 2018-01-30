@@ -18,9 +18,9 @@ const firstLine = 'module.exports = {\n';
 const lastLine = '};\n'
 const lettersPath = './letters/letters.js'
 
-const generateLine = (letter, cities) => `'${letter.toLowerCase()}': ${JSON.stringify(cities)},\n`;
+const generateLine = (cities, letter) => `'${letter.toLowerCase()}': ${JSON.stringify(cities)},\n`;
 
-const clearCities = (cities, letter) => cities.filter((city) => city.length > 1 && letter.toLowerCase() === city[0].toLowerCase());
+const clearCities = (cities, letter) => cities.filter(city => city.length > 1 && letter.toLowerCase() === city[0].toLowerCase());
 
 const getCities = (letters) => {
   if (letters.length === 0) {
@@ -36,18 +36,20 @@ const getCities = (letters) => {
         const cities = $('.bg_white').text().trim().slice(1).split(' ');
 
         const file = fs.readFileSync(lettersPath, 'utf8');
-
-        const clearedCities = generateLine(currentLetter, cities);
+        const clearedCities = clearCities(cities, currentLetter);
 
         fs.writeFileSync(
           lettersPath,
-          `${file}${clearedCities}`
+          `${file}${generateLine(clearedCities, currentLetter)}`
         );
 
         getCities(letters);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(`Error occured on letter ${currentLetter}`);
+        console.error('Trying again.');
+        letters.push(currentLetter)
+        getCities(letters);
       });
   }
 }
